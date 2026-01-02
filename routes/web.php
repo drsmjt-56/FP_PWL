@@ -4,27 +4,42 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\KontakController;
+ fitur-login
+use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('welcome');
+use App\Http\Controllers\KontakController;
+ main
+
+Route::get('/', fn() => redirect()->route('login'));
+
+Route::get('/login', [AuthController::class, 'showLogin'])
+    ->middleware('guest')
+    ->name('login');
+
+Route::get('/', function() {
+    return view('login');
 });
+
+ fitur-login
 
 Route::prefix('admin')->group(function () {
     Route::get('/about', [AboutController::class, 'index']);
     Route::put('/about/{id}', [AboutController::class, 'update']);
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+ main
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::post('/logout', function () {
+    Auth::logout();
+    session()->invalidate();
+    session()->regenerateToken();
+    return redirect('/login');
+})->name('logout');
 
 Route::get('/dashboard', function () {
-    if (!session('is_logged_in')) {
-        return redirect('/login');
-    }
-    return view('dashboard');
-});
-
+    return view('dashboard'); 
+})->middleware('auth');
 
 
 
