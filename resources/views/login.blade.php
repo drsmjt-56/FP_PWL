@@ -10,7 +10,7 @@
 
 <div class="bg-white w-full max-w-md p-8 rounded-xl shadow-lg">
   <h2 class="text-2xl font-bold text-center text-indigo-600 mb-6">
-    Login DompetKu
+    Login MontuAdventure
   </h2>
 
   @if (session('failed'))
