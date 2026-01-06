@@ -36,7 +36,7 @@
         </a>
         <a href="{{ url('/kontak') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
           Kontak
-      <form method="POST" action="{{ route('logout') }}">
+      <form method="POST" action="{{ route('logout') }} ">
       @csrf
       <button type="submit" class="block w-full text-left px-4 py-2.5 text-red-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
         Logout
