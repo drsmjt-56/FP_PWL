@@ -13,6 +13,12 @@ class KontakController extends Controller
         return view('kontak.index', compact('kontak'));
     }
 
+    public function edit($id)
+    {
+        $kontak = Kontak::findOrFail($id);
+        return view('kontak.edit', compact('kontak'));
+    }
+
     public function store(Request $request) //validasi input dari user
     {
         Kontak::create($request->validate([

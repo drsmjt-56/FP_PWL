@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Montu Adventure - @yield('title')</title>
+  <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
@@ -25,24 +30,33 @@
         <a href="{{ url('/') }}" class="block px-4 py-2.5 bg-indigo-50 text-indigo-700 rounded-lg font-medium">
           Dashboard
         </a>
+fitur-produk
         <a href="{{ url('/') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
+
+        <a href="{{ url('/') }}" class="block px-4 py-2.5 bg-indigo-50 text-indigo-700 rounded-lg font-medium">
+main
           Home
         </a>
         <a href="{{ url('/produk') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
           Produk
         </a>
-        <a href="{{ url('/laporan') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
+        <a href="{{ url('/admin/about') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
           About Us
         </a>
         <a href="{{ url('/kontak') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
+fitur-about
           Kontak
-      <form method="POST" action="{{ route('logout') }}">
+        </a>
+        <a href="/logout"  class="block px-4 py-2.5 text-red-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">Logout</a>
+          Kontak 
+        </a>
+      <form method="POST" action="{{ route('logout') }} ">
       @csrf
       <button type="submit" class="block w-full text-left px-4 py-2.5 text-red-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
         Logout
       </button>
       </form>
-
+ main
       </nav>
     </aside>
 

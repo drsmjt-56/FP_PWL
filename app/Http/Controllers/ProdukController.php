@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+fitur-produk
 use App\Models\Produk;
 use App\Models\Kategori;
 
@@ -93,4 +94,10 @@ class ProdukController extends Controller
         return redirect()->route('produk.index')
                          ->with('success', 'Produk berhasil dihapus');
     }
+
+
+class ProdukController extends Controller
+{
+    //
+main
 }
