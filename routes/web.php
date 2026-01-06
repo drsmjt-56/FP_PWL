@@ -4,11 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\AuthController;
- fitur-login
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\KontakController;
- main
 
 Route::get('/', fn() => redirect()->route('login'));
 
@@ -20,14 +18,12 @@ Route::get('/', function() {
     return view('login');
 });
 
- fitur-login
 
 Route::prefix('admin')->group(function () {
     Route::get('/about', [AboutController::class, 'index']);
     Route::put('/about/{id}', [AboutController::class, 'update']);
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
- main
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', function () {
