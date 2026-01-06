@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-fitur-produk
 use App\Models\Produk;
 use App\Models\Kategori;
 
@@ -95,9 +94,4 @@ class ProdukController extends Controller
                          ->with('success', 'Produk berhasil dihapus');
     }
 
-
-class ProdukController extends Controller
-{
-    //
-main
 }

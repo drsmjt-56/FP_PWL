@@ -12,6 +12,8 @@ class Produk extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_produk',
         'id_kategori',
