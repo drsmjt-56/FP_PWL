@@ -69,7 +69,8 @@
 
 <!-- ACTION BUTTON -->
 <div class="mt-6 flex gap-4">
-    <a href="#" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+    <a href="#" 
+    class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
         + Tambah Produk
     </a>
     <a href="#" class="px-5 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
