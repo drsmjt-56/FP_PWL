@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
-    // READ
+    // TAMPIL TABEL
     public function index()
     {
         $about = About::first();
 
-        // AUTO CREATE JIKA DATA BELUM ADA
+        // auto create kalau belum ada
         if (!$about) {
             $about = About::create([
                 'judul' => '',
@@ -28,35 +28,40 @@ class AboutController extends Controller
         return view('admin.about.index', compact('about'));
     }
 
-    // UPDATE
+    // HALAMAN EDIT
+    public function edit($id)
+    {
+        $about = About::findOrFail($id);
+        return view('admin.about.edit', compact('about'));
+    }
+
+    // UPDATE DATA
     public function update(Request $request, $id)
     {
         $request->validate([
-            'judul' => 'required',
-            'deskripsi' => 'required',
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'visi' => 'nullable|string',
+            'misi' => 'nullable|string',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $about = About::findOrFail($id);
 
-        // data teks
-        $data = $request->only([
-            'judul',
-            'deskripsi',
-            'visi',
-            'misi',
-        ]);
+        $data = [
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'visi' => $request->visi,
+            'misi' => $request->misi,
+        ];
 
-        // upload gambar
         if ($request->hasFile('gambar')) {
-
-            // hapus gambar lama jika ada
-            if ($about->gambar) {
-                Storage::delete('public/about/' . $about->gambar);
+            if ($about->gambar && Storage::exists('public/about/'.$about->gambar)) {
+                Storage::delete('public/about/'.$about->gambar);
             }
 
             $file = $request->file('gambar');
-            $namaFile = time() . '.' . $file->getClientOriginalExtension();
+            $namaFile = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
             $file->storeAs('public/about', $namaFile);
 
             $data['gambar'] = $namaFile;
@@ -64,6 +69,8 @@ class AboutController extends Controller
 
         $about->update($data);
 
-        return redirect()->back()->with('success', 'About Us berhasil diperbarui');
+        return redirect()
+            ->route('about.index')
+            ->with('success', 'About Us berhasil diperbarui');
     }
 }
