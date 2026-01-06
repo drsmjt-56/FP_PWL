@@ -20,9 +20,11 @@ Route::get('/', function() {
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('/about', [AboutController::class, 'index']);
-    Route::put('/about/{id}', [AboutController::class, 'update']);
+    Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+    Route::get('/about/{id}/edit', [AboutController::class, 'edit'])->name('about.edit');
+    Route::put('/about/{id}', [AboutController::class, 'update'])->name('about.update');
 });
+
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
