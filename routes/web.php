@@ -18,7 +18,10 @@ Route::get('/', function() {
     return view('login');
 });
 
+fitur-kontak
 
+
+main
 Route::prefix('admin')->group(function () {
     Route::get('/about', [AboutController::class, 'index'])->name('about.index');
     Route::get('/about/{id}/edit', [AboutController::class, 'edit'])->name('about.edit');
@@ -26,6 +29,10 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+fitur-kontak
+
+
+main
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', function () {
@@ -50,6 +57,7 @@ Route::get('/dashboard', function () {
 //route kontak
 Route::get('/kontak', [KontakController::class,'index']);
 Route::post('/kontak', [KontakController::class,'store']);
+Route::get('/kontak/{id}/edit', [KontakController::class,'edit']);
 Route::put('/kontak/{id}', [KontakController::class,'update']);
 Route::delete('/kontak/{id}', [KontakController::class, 'destroy']);
 
