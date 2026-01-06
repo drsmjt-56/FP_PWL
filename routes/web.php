@@ -4,16 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\AuthController;
- fitur-produk
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
-
-
-use Illuminate\Support\Facades\Auth;
-
-use App\Http\Controllers\KontakController;
-main
 
 //Route login
 Route::get('/', fn() => redirect()->route('login'));
@@ -26,14 +19,8 @@ Route::get('/', function() {
     return view('login');
 });
 
-fitur-produk
 //Route About
 
-fitur-kontak
-
-
-main
-main
 Route::prefix('admin')->group(function () {
     Route::get('/about', [AboutController::class, 'index'])->name('about.index');
     Route::get('/about/{id}/edit', [AboutController::class, 'edit'])->name('about.edit');
@@ -41,13 +28,7 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
- fitur-produk
 
-fitur-kontak
-
-
-main
- main
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', function () {
@@ -85,7 +66,7 @@ Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])
 Route::put('/produk/{id}', [ProdukController::class, 'update'])
     ->name('produk.update');
 
-fitur-produk
+
 Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])
     ->name('produk.destroy');
 
@@ -99,4 +80,4 @@ Route::delete('/kontak/{id}', [KontakController::class, 'destroy']);
 //test push
 //test part2
 //test 3
-main
+

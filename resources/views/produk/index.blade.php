@@ -1,10 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
+
+<h1 class="text-2xl font-bold mb-6">Data Produk</h1>
 <div class="bg-white p-6 rounded shadow">
 
 <div class="flex justify-between mb-4">
-    <h1 class="text-xl font-bold">Data Produk</h1>
     <a href="{{ route('produk.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded">
         + Tambah Produk
     </a>
@@ -33,15 +34,26 @@
         <img src="{{ asset('uploads/produk/'.$p->gambar) }}" class="w-16 mx-auto rounded">
         @endif
     </td>
-    <td class="p-2 border text-center">
-        <a href="{{ route('produk.edit',$p->id_produk) }}" class="text-blue-600 mr-2">Edit</a>
 
-        <form action="{{ route('produk.destroy',$p->id_produk) }}" method="POST" class="inline"
-              onsubmit="return confirm('Hapus produk?')">
-            @csrf
-            @method('DELETE')
-            <button class="text-red-600">Hapus</button>
-        </form>
+    <td class="p-2 border text-center">
+    <a href="{{ route('produk.edit',$p->id_produk) }}"
+       class="inline-flex items-center text-blue-600 mr-4 hover:text-blue-800">
+        <i class="fa-solid fa-pencil mr-1"></i>
+        Edit
+    </a>
+
+    <form action="{{ route('produk.destroy',$p->id_produk) }}"
+          method="POST"
+          class="inline-flex items-center"
+          onsubmit="return confirm('Hapus produk?')">
+        @csrf
+        @method('DELETE')
+
+        <button class="inline-flex items-center text-red-600 hover:text-red-800">
+            <i class="fa-solid fa-trash mr-1"></i>
+            Hapus
+        </button>
+    </form>
     </td>
 </tr>
 @empty
