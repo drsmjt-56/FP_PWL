@@ -30,11 +30,8 @@
         <a href="{{ url('/') }}" class="block px-4 py-2.5 bg-indigo-50 text-indigo-700 rounded-lg font-medium">
           Dashboard
         </a>
-fitur-produk
+<!--fitur-produk-->
         <a href="{{ url('/') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
-
-        <a href="{{ url('/') }}" class="block px-4 py-2.5 bg-indigo-50 text-indigo-700 rounded-lg font-medium">
-main
           Home
         </a>
         <a href="{{ url('/produk') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
@@ -44,11 +41,8 @@ main
           About Us
         </a>
         <a href="{{ url('/kontak') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
-fitur-about
+<!--fitur-about-->
           Kontak
-        </a>
-        <a href="/logout"  class="block px-4 py-2.5 text-red-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">Logout</a>
-          Kontak 
         </a>
       <form method="POST" action="{{ route('logout') }} ">
       @csrf
@@ -56,7 +50,7 @@ fitur-about
         Logout
       </button>
       </form>
- main
+<!--main-->
       </nav>
     </aside>
 
