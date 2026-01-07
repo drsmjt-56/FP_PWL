@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+    //tes kategori
     public function up(): void
     {
         Schema::create('kategori', function (Blueprint $table) {
