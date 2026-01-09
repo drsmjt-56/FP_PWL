@@ -10,6 +10,7 @@ class FrontendProdukController extends Controller
     public function index()
     {
         $produk = Produk::where('stok', '>', 0)->get();
-        return view('frontend.produk', compact('produk'));
+
+        return view('frontend.produk.index', compact('produk'));
     }
 }
