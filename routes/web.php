@@ -2,11 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Admin\AboutController;
+
 use App\Http\Controllers\AuthController;
+
+//ADMIN
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
+
+//FRONTEND
+
+/*
+| AUTH
+|--------------------------------------------------------------------------
+*/
 
 //Route login
 Route::get('/', fn() => redirect()->route('login'));
@@ -18,6 +28,12 @@ Route::get('/login', [AuthController::class, 'showLogin'])
 Route::get('/', function() {
     return view('login');
 });
+
+
+/*
+| ADMIN / BACKEND
+|--------------------------------------------------------------------------
+*/
 
 //Route About
 
@@ -77,7 +93,9 @@ Route::get('/kontak/{id}/edit', [KontakController::class,'edit']);
 Route::put('/kontak/{id}', [KontakController::class,'update']);
 Route::delete('/kontak/{id}', [KontakController::class, 'destroy']);
 
-//test push
-//test part2
-//test 3
+
+/*
+| FRONTEND
+|--------------------------------------------------------------------------
+*/
 
