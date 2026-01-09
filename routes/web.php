@@ -3,17 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+// ======================
+// AUTH & ADMIN CONTROLLER
+// ======================
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ProdukController;       // ADMIN PRODUK
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\KategoriController;
 
-//FRONTEND
-use App\Http\Controllers\Frontend\FrontendProdukController;
-
-
+// ======================
+// FRONTEND CONTROLLER
+// ======================
+use App\Http\Controllers\Frontend\FrontendProdukController; // ✅ BARU (FRONTEND)
 
 /*
 |--------------------------------------------------------------------------
@@ -21,16 +24,18 @@ use App\Http\Controllers\Frontend\FrontendProdukController;
 |--------------------------------------------------------------------------
 */
 
+// ⛔ JANGAN LANGSUNG KE DASHBOARD
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
+// LOGIN
 Route::get('/login', [AuthController::class, 'showLogin'])
-    ->middleware('guest')
     ->name('login');
 
 Route::post('/login', [AuthController::class, 'login']);
 
+// LOGOUT
 Route::post('/logout', function () {
     Auth::logout();
     request()->session()->invalidate();
@@ -38,13 +43,16 @@ Route::post('/logout', function () {
     return redirect()->route('login');
 })->name('logout');
 
+
 /*
 |--------------------------------------------------------------------------
 | ADMIN / BACKEND
 |--------------------------------------------------------------------------
+| SEMUA ADMIN PAKAI PREFIX /admin
+| WAJIB LOGIN
 */
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->prefix('admin')->group(function () {
 
     /*
     |-------------------------
@@ -59,7 +67,8 @@ Route::middleware('auth')->group(function () {
 
     /*
     |-------------------------
-    | PRODUK
+    | PRODUK (ADMIN)
+    | URL: /admin/produk
     |-------------------------
     */
     Route::get('/produk', [ProdukController::class, 'index'])
@@ -83,7 +92,7 @@ Route::middleware('auth')->group(function () {
 
     /*
     |-------------------------
-    | KONTAK
+    | KONTAK (ADMIN)
     |-------------------------
     */
     Route::get('/kontak', [KontakController::class, 'index'])
@@ -104,7 +113,7 @@ Route::middleware('auth')->group(function () {
 
     /*
     |-------------------------
-    | PEMBAYARAN 
+    | PEMBAYARAN (ADMIN)
     |-------------------------
     */
     Route::get('/pembayaran', [PembayaranController::class, 'index'])
@@ -119,11 +128,21 @@ Route::middleware('auth')->group(function () {
 
     /*
     |-------------------------
-    | KATEGORI
+    | KATEGORI (ADMIN)
     |-------------------------
     */
     Route::resource('kategori', KategoriController::class);
 });
 
 
-//FRONTEND
+/*
+|--------------------------------------------------------------------------
+| FRONTEND / PUBLIK
+|--------------------------------------------------------------------------
+| TANPA LOGIN
+*/
+
+// ✅ FRONTEND PRODUK
+// URL: /produk
+Route::get('/produk', [FrontendProdukController::class, 'index'])
+    ->name('frontend.produk');
