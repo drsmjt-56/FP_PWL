@@ -7,19 +7,31 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\DashboardController;
 
 //Route login
-Route::get('/', fn() => redirect()->route('login'));
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
 Route::get('/login', [AuthController::class, 'showLogin'])
     ->middleware('guest')
     ->name('login');
 
-Route::get('/', function() {
-    return view('login');
-});
+// Proses login
+Route::post('/login', [AuthController::class, 'login']);
 
-//Route About
+// Logout
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect()->route('login');
+})->name('logout');
+
+
+
+//Route kategori
 
 Route::prefix('admin')->group(function () {
     Route::get('/about', [AboutController::class, 'index'])->name('about.index');
@@ -27,27 +39,14 @@ Route::prefix('admin')->group(function () {
     Route::put('/about/{id}', [AboutController::class, 'update'])->name('about.update');
 });
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 
-Route::post('/login', [AuthController::class, 'login']);
+//dashboard selvie
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware('auth')
+    ->name('dashboard');
 
-Route::post('/logout', function () {
-    Auth::logout();
-    session()->invalidate();
-    session()->regenerateToken();
-    return redirect('/login');
-})->name('logout');
-
-Route::get('/dashboard', function () {
-    return view('dashboard'); 
-})->middleware('auth');
-
-
-//route kontak
-Route::get('/kontak', [KontakController::class,'index']);
-Route::post('/kontak', [KontakController::class,'store']);
-Route::put('/kontak/{id}', [KontakController::class,'update']);
-Route::delete('/kontak/{id}', [KontakController::class, 'destroy']);
+Route::get('/dashboard/chart-data', [DashboardController::class, 'chartData'])
+    ->middleware('auth');
 
 
 //Route Produk
@@ -76,6 +75,10 @@ Route::post('/kontak', [KontakController::class,'store']);
 Route::get('/kontak/{id}/edit', [KontakController::class,'edit']);
 Route::put('/kontak/{id}', [KontakController::class,'update']);
 Route::delete('/kontak/{id}', [KontakController::class, 'destroy']);
+//kontak selvie 
+Route::get('/kontak', [KontakController::class, 'index'])
+    ->name('kontak.index');
+
 
 //test push
 //test part2
