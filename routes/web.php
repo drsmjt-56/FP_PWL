@@ -31,7 +31,7 @@ Route::get('/login', [AuthController::class, 'showLogin'])
 // Proses login
 Route::post('/login', [AuthController::class, 'login']);
 
-<<<<<<< HEAD
+
 // Logout
 Route::post('/logout', function () {
     Auth::logout();
@@ -43,7 +43,7 @@ Route::post('/logout', function () {
 
 
 //Route kategori
-=======
+
 
 /*
 | ADMIN / BACKEND
@@ -51,7 +51,7 @@ Route::post('/logout', function () {
 */
 
 //Route About
->>>>>>> 3c16a08dd6b96c1c29343e0e20d8a3def702a761
+
 
 Route::prefix('admin')->group(function () {
     Route::get('/about', [AboutController::class, 'index'])->name('about.index');
