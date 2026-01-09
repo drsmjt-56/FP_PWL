@@ -38,5 +38,4 @@
     </form>
   </div>
 </body>
-php_check_syntax
 </html>
