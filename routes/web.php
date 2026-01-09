@@ -11,7 +11,8 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\KategoriController;
 
 //FRONTEND
-use App\Http\Controllers\Frontend\ProdukController as FrontendProdukController;
+use App\Http\Controllers\Frontend\FrontendProdukController;
+
 
 
 /*
@@ -126,5 +127,3 @@ Route::middleware('auth')->group(function () {
 
 
 //FRONTEND
-Route::get('/produk', [FrontendProdukController::class, 'index'])
-    ->name('frontend.produk');
