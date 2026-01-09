@@ -31,8 +31,8 @@
           Dashboard
         </a>
 <!--fitur-produk-->
-        <a href="{{ url('/') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
-          Home
+        <a href="{{ url('/pembayaran') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
+          Pembayaran
         </a>
         <a href="{{ url('/produk') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
           Produk
@@ -69,7 +69,10 @@
         </div>
         @endif
 
-        @yield('content')
+       @yield('content')
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      @stack('scripts')
       </div>
     </main>
   </div>
