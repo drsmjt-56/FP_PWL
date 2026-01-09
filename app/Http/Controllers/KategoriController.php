@@ -7,60 +7,69 @@ use Illuminate\Http\Request;
 
 class KategoriController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // READ
     public function index()
     {
         $kategori = Kategori::all();
         return view('kategori.index', compact('kategori'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // FORM CREATE
     public function create()
     {
-        //
+        return view('kategori.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // STORE
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_kategori'   => 'required|unique:kategori,id_kategori',
+            'nama_kategori' => 'required',
+        ]);
+
+        Kategori::create([
+            'id_kategori'   => $request->id_kategori,
+            'nama_kategori' => $request->nama_kategori,
+            'status'        => $request->status ?? 'tersedia',
+        ]);
+
+        return redirect()->route('kategori.index')
+            ->with('success', 'Kategori berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Kategori $kategori)
+    // FORM EDIT
+    public function edit($id_kategori)
     {
-        //
+        $kategori = Kategori::findOrFail($id_kategori);
+        return view('kategori.edit', compact('kategori'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Kategori $kategori)
+    // UPDATE
+    public function update(Request $request, $id_kategori)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required',
+            'status'        => 'required',
+        ]);
+
+        $kategori = Kategori::findOrFail($id_kategori);
+
+        $kategori->update([
+            'nama_kategori' => $request->nama_kategori,
+            'status'        => $request->status,
+        ]);
+
+        return redirect()->route('kategori.index')
+            ->with('success', 'Kategori berhasil diperbarui');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Kategori $kategori)
+    // DELETE
+    public function destroy($id_kategori)
     {
-        //
-    }
+        Kategori::findOrFail($id_kategori)->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Kategori $kategori)
-    {
-        //
+        return redirect()->route('kategori.index')
+            ->with('success', 'Kategori berhasil dihapus');
     }
 }
