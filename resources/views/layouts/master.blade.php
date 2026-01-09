@@ -37,8 +37,8 @@
         <a href="{{ url('/produk') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
           Produk
         </a>
-        <a href="{{ url('/admin/about') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
-          About Us
+        <a href="{{ url('/kategori') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
+          Kategori
         </a>
         <a href="{{ url('/kontak') }}" class="block px-4 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition">
 <!--fitur-about-->

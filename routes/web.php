@@ -19,14 +19,6 @@ Route::get('/', function() {
     return view('login');
 });
 
-//Route About
-
-Route::prefix('admin')->group(function () {
-    Route::get('/about', [AboutController::class, 'index'])->name('about.index');
-    Route::get('/about/{id}/edit', [AboutController::class, 'edit'])->name('about.edit');
-    Route::put('/about/{id}', [AboutController::class, 'update'])->name('about.update');
-});
-
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -69,6 +61,9 @@ Route::put('/produk/{id}', [ProdukController::class, 'update'])
 
 Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])
     ->name('produk.destroy');
+
+//route kategori
+    Route::resource('kategori', KategoriController::class);
 
 //route kontak
 Route::get('/kontak', [KontakController::class,'index']);
