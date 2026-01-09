@@ -19,5 +19,12 @@ class KontakSeeder extends Seeder
             'pesan' => 'saya mau pesan',
             'status' => 'menunggu',
         ]);
+
+        Kontak::create([
+            'nama' => 'ayu',
+            'nomor_telepon' => '085853232390',
+            'pesan' => 'barang ready tidak',
+            'status' => 'menunggu',
+        ]);
     }
 }

@@ -94,6 +94,7 @@ Route::put('/kontak/{id}', [KontakController::class,'update']);
 Route::delete('/kontak/{id}', [KontakController::class, 'destroy']);
 
 
+
 /*
 | FRONTEND
 |--------------------------------------------------------------------------

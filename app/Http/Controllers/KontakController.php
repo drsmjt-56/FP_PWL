@@ -39,7 +39,7 @@ class KontakController extends Controller
         $kontak = Kontak::findOrFail($id);
         $kontak->update($request->only('status'));
 
-        return redirect()->back()->with('success', 'Status berhasil diubah');
+       return redirect('/kontak')->with('success', 'Status berhasil diubah');
 
     }
 
