@@ -2,120 +2,82 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KontakController;
-use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 
-/*
-|--------------------------------------------------------------------------
-| AUTH
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+//Route login
+Route::get('/', fn() => redirect()->route('login'));
 
 Route::get('/login', [AuthController::class, 'showLogin'])
     ->middleware('guest')
     ->name('login');
 
+Route::get('/', function() {
+    return view('login');
+});
+
+//Route About
+
+Route::prefix('admin')->group(function () {
+    Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+    Route::get('/about/{id}/edit', [AboutController::class, 'edit'])->name('about.edit');
+    Route::put('/about/{id}', [AboutController::class, 'update'])->name('about.update');
+});
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', function () {
     Auth::logout();
-    request()->session()->invalidate();
-    request()->session()->regenerateToken();
-    return redirect()->route('login');
+    session()->invalidate();
+    session()->regenerateToken();
+    return redirect('/login');
 })->name('logout');
 
-/*
-|--------------------------------------------------------------------------
-| ADMIN / BACKEND
-|--------------------------------------------------------------------------
-*/
-
-Route::middleware('auth')->group(function () {
-
-    /*
-    |-------------------------
-    | Dashboard
-    |-------------------------
-    */
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard');
-
-    Route::get('/dashboard/chart-data', [DashboardController::class, 'chartData']);
+Route::get('/dashboard', function () {
+    return view('dashboard'); 
+})->middleware('auth');
 
 
-    /*
-    |-------------------------
-    | PRODUK (MANUAL)
-    |-------------------------
-    */
-    Route::get('/produk', [ProdukController::class, 'index'])
-        ->name('produk.index');
-
-    Route::get('/produk/create', [ProdukController::class, 'create'])
-        ->name('produk.create');
-
-    Route::post('/produk', [ProdukController::class, 'store'])
-        ->name('produk.store');
-
-    Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])
-        ->name('produk.edit');
-
-    Route::put('/produk/{id}', [ProdukController::class, 'update'])
-        ->name('produk.update');
-
-    Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])
-        ->name('produk.destroy');
+//route kontak
+Route::get('/kontak', [KontakController::class,'index']);
+Route::post('/kontak', [KontakController::class,'store']);
+Route::put('/kontak/{id}', [KontakController::class,'update']);
+Route::delete('/kontak/{id}', [KontakController::class, 'destroy']);
 
 
-    /*
-    |-------------------------
-    | KONTAK (MANUAL)
-    |-------------------------
-    */
-    Route::get('/kontak', [KontakController::class, 'index'])
-        ->name('kontak.index');
+//Route Produk
+Route::get('/produk', [ProdukController::class, 'index'])
+    ->name('produk.index');
 
-    Route::post('/kontak', [KontakController::class, 'store'])
-        ->name('kontak.store');
+Route::get('/produk/create', [ProdukController::class, 'create'])
+    ->name('produk.create');
 
-    Route::get('/kontak/{id}/edit', [KontakController::class, 'edit'])
-        ->name('kontak.edit');
+Route::post('/produk', [ProdukController::class, 'store'])
+    ->name('produk.store');
 
-    Route::put('/kontak/{id}', [KontakController::class, 'update'])
-        ->name('kontak.update');
+Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])
+    ->name('produk.edit');
 
-    Route::delete('/kontak/{id}', [KontakController::class, 'destroy'])
-        ->name('kontak.destroy');
+Route::put('/produk/{id}', [ProdukController::class, 'update'])
+    ->name('produk.update');
 
 
-    /*
-    |-------------------------
-    | PEMBAYARAN (MANUAL)
-    |-------------------------
-    */
-    Route::get('/pembayaran', [PembayaranController::class, 'index'])
-        ->name('pembayaran.index');
+Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])
+    ->name('produk.destroy');
 
-    Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])
-        ->name('pembayaran.edit');
+//route kontak
+Route::get('/kontak', [KontakController::class,'index']);
+Route::post('/kontak', [KontakController::class,'store']);
+Route::get('/kontak/{id}/edit', [KontakController::class,'edit']);
+Route::put('/kontak/{id}', [KontakController::class,'update']);
+Route::delete('/kontak/{id}', [KontakController::class, 'destroy']);
 
-    Route::delete('/pembayaran/{id}', [PembayaranController::class, 'destroy'])
-        ->name('pembayaran.destroy');
+//test push
+//test part2
+//test 3
 
-
-    /*
-    |-------------------------
-    | KATEGORI (RESOURCE)
-    |-------------------------
-    */
-    Route::resource('kategori', KategoriController::class);
-});

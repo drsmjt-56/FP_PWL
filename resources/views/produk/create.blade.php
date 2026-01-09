@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Tambah Produk')
+
 @section('content')
 
 <div class="flex justify-center">
