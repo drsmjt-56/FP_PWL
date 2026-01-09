@@ -7,6 +7,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PembayaranController;
+
 
 //Route login
 Route::get('/', fn() => redirect()->route('login'));
@@ -76,6 +78,19 @@ Route::post('/kontak', [KontakController::class,'store']);
 Route::get('/kontak/{id}/edit', [KontakController::class,'edit']);
 Route::put('/kontak/{id}', [KontakController::class,'update']);
 Route::delete('/kontak/{id}', [KontakController::class, 'destroy']);
+
+//Routes Pembayaran
+
+Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
+Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
+Route::delete('/pembayaran/{id}', [PembayaranController::class, 'destroy'])->name('pembayaran.destroy');
+
+
+
+
+
+
+
 
 //test push
 //test part2
