@@ -10,6 +10,8 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\KategoriController;
 
+//FRONTEND
+
 /*
 |--------------------------------------------------------------------------
 | AUTH
@@ -54,7 +56,7 @@ Route::middleware('auth')->group(function () {
 
     /*
     |-------------------------
-    | PRODUK (MANUAL)
+    | PRODUK
     |-------------------------
     */
     Route::get('/produk', [ProdukController::class, 'index'])
@@ -78,7 +80,7 @@ Route::middleware('auth')->group(function () {
 
     /*
     |-------------------------
-    | KONTAK (MANUAL)
+    | KONTAK
     |-------------------------
     */
     Route::get('/kontak', [KontakController::class, 'index'])
@@ -99,7 +101,7 @@ Route::middleware('auth')->group(function () {
 
     /*
     |-------------------------
-    | PEMBAYARAN (MANUAL)
+    | PEMBAYARAN 
     |-------------------------
     */
     Route::get('/pembayaran', [PembayaranController::class, 'index'])
@@ -114,8 +116,11 @@ Route::middleware('auth')->group(function () {
 
     /*
     |-------------------------
-    | KATEGORI (RESOURCE)
+    | KATEGORI
     |-------------------------
     */
     Route::resource('kategori', KategoriController::class);
 });
+
+
+//FRONTEND
