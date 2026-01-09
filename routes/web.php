@@ -2,12 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Admin\AboutController;
+
 use App\Http\Controllers\AuthController;
+
+//ADMIN
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
+
+//FRONTEND
+
+/*
+| AUTH
+|--------------------------------------------------------------------------
+*/
 
 //Route login
 Route::get('/', function () {
@@ -21,6 +31,7 @@ Route::get('/login', [AuthController::class, 'showLogin'])
 // Proses login
 Route::post('/login', [AuthController::class, 'login']);
 
+<<<<<<< HEAD
 // Logout
 Route::post('/logout', function () {
     Auth::logout();
@@ -32,6 +43,15 @@ Route::post('/logout', function () {
 
 
 //Route kategori
+=======
+
+/*
+| ADMIN / BACKEND
+|--------------------------------------------------------------------------
+*/
+
+//Route About
+>>>>>>> 3c16a08dd6b96c1c29343e0e20d8a3def702a761
 
 Route::prefix('admin')->group(function () {
     Route::get('/about', [AboutController::class, 'index'])->name('about.index');
@@ -80,7 +100,10 @@ Route::get('/kontak', [KontakController::class, 'index'])
     ->name('kontak.index');
 
 
-//test push
-//test part2
-//test 3
+
+
+/*
+| FRONTEND
+|--------------------------------------------------------------------------
+*/
 
