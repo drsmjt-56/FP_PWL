@@ -4,66 +4,70 @@
 
 @section('content')
 
-<div class="flex justify-center">
-  <div class="w-full max-w-xl bg-white p-6 rounded shadow">
+<h1 class="text-2xl font-bold mb-6">Edit Produk</h1>
 
-    <h1 class="text-xl font-bold mb-6 text-center">Edit Produk</h1>
+<div class="bg-white p-6 rounded shadow">
 
-    <form method="POST"
-          action="{{ route('produk.update', $produk->id_produk) }}"
+    <!-- 🔴 DIGANTI -->
+    <form action="{{ route('admin.produk.update', $produk->id_produk) }}"
+          method="POST"
           enctype="multipart/form-data">
-      @csrf
-      @method('PUT')
+        @csrf
+        @method('PUT')
 
-      <label class="block mb-1 font-semibold">Kategori</label>
-      <select name="id_kategori" class="w-full border p-2 mb-4 rounded">
-        @foreach($kategori as $k)
-          <option value="{{ $k->id_kategori }}"
-            {{ $produk->id_kategori == $k->id_kategori ? 'selected' : '' }}>
-            {{ $k->nama_kategori }}
-          </option>
-        @endforeach
-      </select>
+        <div class="mb-4">
+            <label class="block mb-1">Nama Produk</label>
+            <input type="text" name="nama_produk"
+                   value="{{ $produk->nama_produk }}"
+                   class="w-full border rounded px-3 py-2">
+        </div>
 
-      <label class="block mb-1 font-semibold">Nama Produk</label>
-      <input type="text" name="nama_produk"
-             value="{{ $produk->nama_produk }}"
-             class="w-full border p-2 mb-4 rounded">
+        <div class="mb-4">
+            <label class="block mb-1">Kategori</label>
+            <select name="id_kategori" class="w-full border rounded px-3 py-2">
+                @foreach($kategori as $k)
+                    <option value="{{ $k->id_kategori }}"
+                        {{ $produk->id_kategori == $k->id_kategori ? 'selected' : '' }}>
+                        {{ $k->nama_kategori }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
 
-      <label class="block mb-1 font-semibold">Harga Sewa / Hari</label>
-      <input type="number" name="harga_sewa_perhari"
-             value="{{ $produk->harga_sewa_perhari }}"
-             class="w-full border p-2 mb-4 rounded">
+        <div class="mb-4">
+            <label class="block mb-1">Harga / Hari</label>
+            <input type="number" name="harga_sewa_perhari"
+                   value="{{ $produk->harga_sewa_perhari }}"
+                   class="w-full border rounded px-3 py-2">
+        </div>
 
-      <label class="block mb-1 font-semibold">Stok</label>
-      <input type="number" name="stok"
-             value="{{ $produk->stok }}"
-             class="w-full border p-2 mb-4 rounded">
+        <div class="mb-4">
+            <label class="block mb-1">Stok</label>
+            <input type="number" name="stok"
+                   value="{{ $produk->stok }}"
+                   class="w-full border rounded px-3 py-2">
+        </div>
 
-      <label class="block mb-1 font-semibold">Gambar Saat Ini</label>
-      @if($produk->gambar)
-        <img src="{{ asset('uploads/produk/'.$produk->gambar) }}"
-             class="w-24 mb-3 rounded">
-      @else
-        <p class="text-gray-400 mb-3">Tidak ada gambar</p>
-      @endif
+        <div class="mb-4">
+            <label class="block mb-1">Gambar</label>
+            <input type="file" name="gambar">
+            @if($produk->gambar)
+                <img src="{{ asset('uploads/produk/'.$produk->gambar) }}"
+                     class="w-20 mt-2 rounded">
+            @endif
+        </div>
 
-      <label class="block mb-1 font-semibold">Ganti Gambar</label>
-      <input type="file" name="gambar"
-             class="w-full border p-2 mb-6 rounded">
+        <div class="flex gap-2">
+            <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700>
+                Update
+            </button>
 
-      <div class="flex justify-between">
-        <a href="{{ route('produk.index') }}" class="text-gray-600 hover:underline">
-          Kembali
-        </a>
-
-        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-          Update
-        </button>
-      </div>
-
+            <!-- 🔴 DIGANTI -->
+            <a href="{{ route('admin.produk.index') }}"
+               class="bg-gray-500 text-white px-4 py-2 rounded">
+                Batal
+            </a>
+        </div>
     </form>
-  </div>
 </div>
-
 @endsection

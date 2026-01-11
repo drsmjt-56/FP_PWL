@@ -11,8 +11,8 @@
     </div>
 @endif
 
-<a href="{{ route('kategori.create') }}"
-   class="bg-blue-600 text-white px-4 py-2 rounded mb-4 inline-block">
+<a href="{{ route('admin.kategori.create') }}"
+   class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
    + Tambah Kategori
 </a>
 
@@ -33,18 +33,18 @@
                 <td class="border px-4 py-2">{{ $k->nama_kategori }}</td>
                 <td class="border px-4 py-2">{{ $k->status }}</td>
                 <td class="border px-4 py-2 space-x-2">
-                    <a href="{{ route('kategori.edit', $k->id_kategori) }}"
-                       class="bg-yellow-400 text-white px-3 py-1 rounded">
-                       Edit
+                    <a href="{{ route('admin.kategori.edit', $k->id_kategori) }}"
+                       class="inline-flex items-center text-blue-600 mr-4 hover:text-blue-800">
+                    <i class="fa-solid fa-pencil mr-1"></i> Edit
                     </a>
 
-                    <form action="{{ route('kategori.destroy', $k->id_kategori) }}"
+                    <form action="{{ route('admin.kategori.destroy', $k->id_kategori) }}"
                           method="POST" class="inline">
                         @csrf
                         @method('DELETE')
                         <button onclick="return confirm('Yakin hapus?')"
-                                class="bg-red-500 text-white px-3 py-1 rounded">
-                            Hapus
+                                class="text-red-600 hover:text-red-800">
+                        <i class="fa-solid fa-trash mr-1"></i> Hapus
                         </button>
                     </form>
                 </td>

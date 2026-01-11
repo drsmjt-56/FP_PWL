@@ -1,81 +1,95 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Montu Adventure - @yield('title')</title>
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-..."
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Montu Adventure - @yield('title')</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <div class="flex h-screen">
+
+<body class="bg-gray-50">
+
+<div class="flex h-screen">
 
     <!-- SIDEBAR -->
-    <aside class="w-72 bg-white flex flex-col h-screen">
-      <!-- LOGO & NAMA -->
-      <a href="{{ route('dashboard') }}" class="p-6 flex items-center space-x-3 bg-green-100">
-        <img src="{{ asset('images/logo.PNG') }}" alt="Logo" class="h-10 w-10 object-contain" />
-        <h1 class="text-2xl font-bold text-green-700 tracking-tight">MontuAdventure</h1>
-      </a>
+    <aside class="w-72 bg-white border-r flex flex-col">
 
-      <nav class="flex-1 mt-6 px-6 space-y-2 overflow-y-auto">
-        <a href="{{ url('/') }}" class="block px-4 py-2.5 bg-green-100 text-green-800 rounded-lg font-medium">
-          Dashboard
-        </a>
-        <a href="{{ url('/pembayaran') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-600 hover:text-white transition duration-300 ease-in-out">
-          <i class="fas fa-wallet mr-2 text-green-700"></i> Pembayaran
-        </a>
-        <a href="{{ url('/produk') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-600 hover:text-white transition duration-300 ease-in-out">
-          <i class="fas fa-tent mr-2 text-green-700"></i> Produk
-        </a>
-        <a href="{{ url('/kategori') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-600 hover:text-white transition duration-300 ease-in-out">
-          <i class="fas fa-list mr-2 text-green-700"></i> Kategori
-        </a>
-        <a href="{{ url('/kontak') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-600 hover:text-white transition duration-300 ease-in-out">
-          <i class="fas fa-envelope mr-2 text-green-700"></i> Kontak
+        <!-- LOGO -->
+        <a href="{{ route('admin.dashboard') }}"
+           class="p-6 flex items-center space-x-3 bg-green-100">
+            <img src="{{ asset('images/logo.PNG') }}" class="h-10 w-10">
+            <span class="text-2xl font-bold text-green-700">MontuAdventure</span>
         </a>
 
-        <form method="POST" action="{{ route('logout') }}">
-          @csrf
-          <button type="submit" class="block w-full text-left px-4 py-2.5 text-red-600 hover:bg-red-100 hover:text-red-700 rounded-lg transition duration-300 ease-in-out">
-            Logout
-          </button>
+        <!-- MENU -->
+        <nav class="flex-1 px-6 mt-6 space-y-2">
+
+            <a href="{{ route('admin.dashboard') }}"
+               class="menu {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+               <i class="fas fa-home"></i> Dashboard
+            </a>
+
+            <a href="{{ route('admin.produk.index') }}"
+               class="menu {{ request()->routeIs('admin.produk.*') ? 'active' : '' }}">
+               <i class="fas fa-tent"></i> Produk
+            </a>
+
+            <a href="{{ route('admin.kategori.index') }}"
+               class="menu {{ request()->routeIs('admin.kategori.*') ? 'active' : '' }}">
+               <i class="fas fa-list"></i> Kategori
+            </a>
+
+            <a href="{{ route('admin.pembayaran.index') }}"
+               class="menu {{ request()->routeIs('admin.pembayaran.*') ? 'active' : '' }}">
+               <i class="fas fa-wallet"></i> Pembayaran
+            </a>
+
+            <a href="{{ route('admin.kontak.index') }}"
+               class="menu {{ request()->routeIs('admin.kontak.*') ? 'active' : '' }}">
+               <i class="fas fa-envelope"></i> Kontak
+            </a>
+
+        </nav>
+
+        <!-- LOGOUT -->
+        <form method="POST" action="{{ route('logout') }}" class="p-6 border-t">
+            @csrf
+            <button class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-100 rounded">
+                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </button>
         </form>
-      </nav>
+
     </aside>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-1 flex flex-col overflow-hidden">
-      <header class="bg-white shadow-sm border-b border-gray-200 p-4 md:hidden sticky top-0 z-50">
-        <a href="{{ route('dashboard') }}" class="text-lg font-bold text-green-700">Montu Adventure</a>
-      </header>
-
-      <div class="flex-1 overflow-auto p-4 md:p-8">
-        @if(session('success'))
-        <div class="mb-6 p-4 bg-green-50 border-l-4 border-green-500 text-green-700 rounded-r shadow-sm">
-          <p class="font-bold">Berhasil!</p>
-          <p>{{ session('success') }}</p>
-        </div>
-        @endif
-
+    <!-- CONTENT -->
+    <main class="flex-1 p-8 overflow-auto">
         @yield('content')
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        @stack('scripts')
-      </div>
     </main>
 
-  </div>
+</div>
+
+<style>
+.menu {
+    display: flex;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 8px;
+}
+.menu:hover { background: #dcfce7; }
+.menu.active {
+    background: #16a34a;
+    color: white;
+}
+</style>
+
 </body>
 </html>

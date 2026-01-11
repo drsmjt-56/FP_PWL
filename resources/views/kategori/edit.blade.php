@@ -15,7 +15,7 @@
     </div>
 @endif
 
-<form action="{{ route('kategori.update', $kategori->id_kategori) }}"
+<form action="{{ route('admin.kategori.update', $kategori->id_kategori) }}" {{-- DIUBAH --}}
       method="POST"
       class="bg-white p-6 rounded shadow w-full md:w-1/2">
     @csrf
@@ -48,7 +48,7 @@
         </select>
     </div>
 
-    <button class="bg-blue-600 text-white px-4 py-2 rounded">
+    <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
         Update
     </button>
 </form>

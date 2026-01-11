@@ -36,8 +36,9 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-fetch('/dashboard/chart-data')
+fetch('/admin/dashboard/chart-data') //perbaiki by dr
   .then(res => res.json())
   .then(data => {
 
@@ -178,13 +179,13 @@ fetch('/dashboard/chart-data')
 </div>
 
 <!-- ACTION BUTTON -->
-<div class="mt-6 mb-8 flex gap-8">
-  <a href="{{ route('produk.create') }}"
-     class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+<div class="mt-6 mb-8 flex gap-8"> <!--perbaiki by dr-->
+  <a href="{{ route('admin.produk.create') }}"  
+     class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
     + Tambah Produk
-  </a>
+  </a> 
 
-  <a href="{{ route('kontak.index') }}"
+  <a href="{{ route('admin.kontak.index') }}" 
      class="px-5 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
     Lihat Pesan
   </a>

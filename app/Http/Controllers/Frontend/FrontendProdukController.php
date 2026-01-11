@@ -10,6 +10,6 @@ class FrontendProdukController extends Controller
     public function index()
     {
         $produk = Produk::all();
-        return view('frontend.produk.index', compact('produk'));
+        return view('frontend.produk', compact('produk'));
     }
 }

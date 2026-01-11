@@ -15,7 +15,7 @@
     </div>
 @endif
 
-<form action="{{ route('kategori.store') }}" method="POST"
+<form action="{{ route('admin.kategori.store') }}" method="POST" {{-- DIUBAH --}}
       class="bg-white p-6 rounded shadow w-full md:w-1/2">
     @csrf
 
@@ -40,7 +40,7 @@
         </select>
     </div>
 
-    <button class="bg-blue-600 text-white px-4 py-2 rounded">
+    <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
         Simpan
     </button>
 </form>

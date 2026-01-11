@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
@@ -16,8 +17,8 @@ class FrontendController extends Controller
         return view('frontend.about');
     }
 
-    public function caraSewa()
+    public function kontak()
     {
-        return view('frontend.cara_pesan');
+        return view('frontend.kontak');
     }
 }

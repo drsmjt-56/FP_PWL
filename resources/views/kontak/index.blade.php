@@ -26,41 +26,40 @@
                 <td class="py-2 px-4 border">{{ $d->nomor_telepon }}</td>
                 <td class="py-2 px-4 border">{{ $d->pesan }}</td>
                 <td class="py-2 px-4 border">{{ $d->status }}</td>
-                
-                <td class="py-2 px-4 border text-center space-x-6">
 
-                    <!--balas pesan -->
-                    <a href="https://wa.me/62{{ ltrim($d->nomor_telepon, '0') }}"
-                    target="_blank"
-                    class="inline-flex items-center text-green-600 mr-4 hover:text-green-800">
-                    <i class="fa-brands fa-whatsapp mr-1"></i>
-                    Balas</a>
+                <td class="py-2 px-4 border space-x-4">
+
+                    <!-- Balas WA -->
+                    <a href="https://wa.me/62{{ ltrim($d->nomor_telepon,'0') }}"
+                       target="_blank"
+                       class="inline-flex items-center text-green-600 hover:text-green-800">
+                        <i class="fa-brands fa-whatsapp mr-1"></i> Balas
+                    </a>
 
                     <!-- Edit -->
-                     <a href="{{ url('/kontak/'.$d->id.'/edit') }}"
-                     class="inline-flex items-center text-blue-600 mr-4 hover:text-blue-800">
-                        <i class="fa-solid fa-pencil mr-1"></i>
-                        Edit
+                    <a href="{{ route('admin.kontak.edit', $d->id) }}" {{-- ✅ DIUBAH --}}
+                       class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                        <i class="fa-solid fa-pencil mr-1"></i> Edit
                     </a>
-                     
-                     <!-- Hapus -->
-                      <form method="POST"
-                      action="{{ url('/kontak/'.$d->id) }}"
-                      class="inline"
-                      onsubmit="return confirm('Yakin hapus data?')">
-                      @csrf
-                      @method('DELETE')
-                    
-                      <button type="submit"
-                      class="inline-flex items-center text-red-600 hover:text-red-800">
-                        <i class="fa-solid fa-trash mr-1"></i>
-                        Hapus
-                    </button>
-            </form>
-        </td>
-    </tr>
-    @endforeach
-</tbody>
-</table>
+
+                    <!-- Hapus -->
+                    <form method="POST"
+                          action="{{ route('admin.kontak.destroy', $d->id) }}" {{-- ✅ DIUBAH --}}
+                          class="inline"
+                          onsubmit="return confirm('Yakin hapus data?')">
+                        @csrf
+                        @method('DELETE')
+
+                        <button class="inline-flex items-center text-red-600 hover:text-red-800">
+                            <i class="fa-solid fa-trash mr-1"></i> Hapus
+                        </button>
+                    </form>
+
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
+
 @endsection
