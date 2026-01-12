@@ -49,7 +49,6 @@
     <main class="max-w-7xl mx-auto px-6 py-10">
         @yield('content')
     </main>
-
     {{-- FOOTER --}}
     <footer class="bg-matchaDark text-white">
         <div class="max-w-7xl mx-auto px-6 py-8 grid md:grid-cols-3 gap-6">
