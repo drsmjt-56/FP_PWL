@@ -34,7 +34,7 @@ class KategoriController extends Controller
             'status'        => $request->status ?? 'tersedia',
         ]);
 
-        return redirect()->route('kategori.index')
+        return redirect()->route('admin.kategori.index')
             ->with('success', 'Kategori berhasil ditambahkan');
     }
 
@@ -60,7 +60,7 @@ class KategoriController extends Controller
             'status'        => $request->status,
         ]);
 
-        return redirect()->route('kategori.index')
+        return redirect()->route('admin.kategori.index')
             ->with('success', 'Kategori berhasil diperbarui');
     }
 
@@ -69,7 +69,7 @@ class KategoriController extends Controller
     {
         Kategori::findOrFail($id_kategori)->delete();
 
-        return redirect()->route('kategori.index')
+        return redirect()->route('admin.kategori.index')
             ->with('success', 'Kategori berhasil dihapus');
     }
 }
