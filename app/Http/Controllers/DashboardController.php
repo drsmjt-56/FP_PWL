@@ -15,16 +15,16 @@ class DashboardController extends Controller
     // Total produk
     $totalProduk = Produk::count();
 
-    // Pesan masuk (dari tabel kontak)
+    // Pesan masuk 
     $pesanMasuk = Kontak::count();
 
-    // Produk stok habis (stok = 0)
+    // Produk stok habis 
     $stokHabis = Produk::where('stok', 0)->count();
 
-    // Produk tersedia (stok > 0)
+    // Produk tersedia
     $produkTersedia = Produk::where('stok', '>', 0)->count();
 
-    // Produk stok menipis (misal stok <= 5)
+    // Produk stok menipis
     $stokMenipis = Produk::where('stok', '<=', 5)
                         ->orderBy('stok', 'asc')
                         ->limit(5)

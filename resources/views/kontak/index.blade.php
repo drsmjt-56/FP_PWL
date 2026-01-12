@@ -6,6 +6,13 @@
 
 <h1 class="text-2xl font-bold mb-6 text-center">Pesan Masuk</h1>
 
+{{-- Notifikasi sukses --}}
+@if(session('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6 text-center">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="overflow-x-auto w-full">
     <table class="w-full bg-white border rounded shadow">
         <thead class="bg-gray-200">
@@ -37,14 +44,14 @@
                     </a>
 
                     <!-- Edit -->
-                    <a href="{{ route('admin.kontak.edit', $d->id) }}" {{-- ✅ DIUBAH --}}
+                    <a href="{{ route('admin.kontak.edit', $d->id) }}"
                        class="inline-flex items-center text-blue-600 hover:text-blue-800">
                         <i class="fa-solid fa-pencil mr-1"></i> Edit
                     </a>
 
                     <!-- Hapus -->
                     <form method="POST"
-                          action="{{ route('admin.kontak.destroy', $d->id) }}" {{-- ✅ DIUBAH --}}
+                          action="{{ route('admin.kontak.destroy', $d->id) }}"
                           class="inline"
                           onsubmit="return confirm('Yakin hapus data?')">
                         @csrf

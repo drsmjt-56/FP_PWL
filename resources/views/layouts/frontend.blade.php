@@ -2,7 +2,11 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <title>Montu Adventure</title>
+=======
+    <title>@yield('title', 'M0ntu Adventure')</title>
+>>>>>>> 592f4192e3db1fb2bcbfb61c5e96b3e411b009c2
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -35,17 +39,20 @@
                  alt="Montu Adventure"
                  class="h-10 w-auto">
 
+
             <span class="text-xl font-bold text-matchaDark">
                 Montu Adventure
             </span>
         </div>
 
-        {{-- MENU --}}
-        <nav class="hidden md:flex gap-6 text-sm font-medium">
-            <a href="{{ route('frontend.home') }}" class="hover:text-matcha">Beranda</a>
+            {{-- MENU --}}
+
+        <nav class="space-x-6 text-sm font-medium">
+            <a href="{{ route('frontend.home') }}" class="hover:text-matcha">Home</a>
+            <a href="{{ route('frontend.about') }}" class="hover:text-matcha">About</a>
             <a href="{{ route('frontend.produk') }}" class="hover:text-matcha">Produk</a>
-            <a href="{{ route('frontend.about') }}" class="hover:text-matcha">Tentang</a>
-            <a href="{{ route('frontend.kontak') }}" class="hover:text-matcha">Kontak</a>
+            <a href="{{ route('cara_pesan') }}" class="hover:text-matcha">Cara Sewa</a>
+            <a href="{{ route('frontend.kontak') }}" class="hover:text-matcha">Contact</a>
         </nav>
 
     </div>
@@ -75,6 +82,39 @@
                 petualangan alam Anda.
             </p>
         </div>
+<<<<<<< HEAD
+=======
+    </header>
+
+    {{-- CONTENT --}}
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        @yield('content')
+    </main>
+    {{-- FOOTER --}}
+    <footer class="bg-matchaDark text-white">
+        <div class="max-w-7xl mx-auto px-6 py-8 grid md:grid-cols-3 gap-6">
+
+            <div>
+                <h2 class="text-xl font-bold">M0ntu Adventure</h2>
+                <p class="text-sm mt-2">
+                    Penyedia sewa alat camping & outdoor terpercaya.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-semibold mb-2">Sosial Media</h3>
+                <ul class="space-y-1 text-sm">
+                    <li>WhatsApp</li>
+                    <li>Instagram</li>
+                    <li>TikTok</li>
+                </ul>
+            </div>
+
+            <div class="text-sm text-right">
+                © {{ date('Y') }} M0ntu Adventure <br>
+                All rights reserved
+            </div>
+>>>>>>> 592f4192e3db1fb2bcbfb61c5e96b3e411b009c2
 
         <div>
             <h3 class="text-lg font-semibold mb-4">Layanan Populer</h3>
