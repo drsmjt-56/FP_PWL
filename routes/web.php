@@ -12,12 +12,8 @@ use App\Http\Controllers\KategoriController;
 
 //FRONTEND
 use App\Http\Controllers\Frontend\FrontendController;
-<<<<<<< HEAD
-use App\Http\Controllers\Frontend\ProdukController as FrontendProdukController;
-=======
 use App\Http\Controllers\Frontend\FrontendProdukController;
 use App\Http\Controllers\Frontend\FrontendKontakController;
->>>>>>> 597fe26083cd0ae4508da10825fcf4cf75aac7e0
 
 
 /*
@@ -128,8 +124,6 @@ Route::middleware('auth')->group(function () {
     |-------------------------
     */
     Route::resource('kategori', KategoriController::class);
-<<<<<<< HEAD
-=======
 
     // PEMBAYARAN
     Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
@@ -141,7 +135,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/kontak/{id}/edit', [KontakController::class, 'edit'])->name('kontak.edit');
     Route::put('/kontak/{id}', [KontakController::class, 'update'])->name('kontak.update');
     Route::delete('/kontak/{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
->>>>>>> 597fe26083cd0ae4508da10825fcf4cf75aac7e0
 });
 
 
