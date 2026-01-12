@@ -12,7 +12,12 @@ use App\Http\Controllers\KategoriController;
 
 //FRONTEND
 use App\Http\Controllers\Frontend\FrontendController;
+<<<<<<< HEAD
 use App\Http\Controllers\Frontend\ProdukController as FrontendProdukController;
+=======
+use App\Http\Controllers\Frontend\FrontendProdukController;
+use App\Http\Controllers\Frontend\FrontendKontakController;
+>>>>>>> 597fe26083cd0ae4508da10825fcf4cf75aac7e0
 
 
 /*
@@ -123,6 +128,20 @@ Route::middleware('auth')->group(function () {
     |-------------------------
     */
     Route::resource('kategori', KategoriController::class);
+<<<<<<< HEAD
+=======
+
+    // PEMBAYARAN
+    Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
+    Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
+    Route::delete('/pembayaran/{id}', [PembayaranController::class, 'destroy'])->name('pembayaran.destroy');
+
+    // KONTAK
+    Route::get('/kontak', [KontakController::class, 'index'])->name('kontak.index');
+    Route::get('/kontak/{id}/edit', [KontakController::class, 'edit'])->name('kontak.edit');
+    Route::put('/kontak/{id}', [KontakController::class, 'update'])->name('kontak.update');
+    Route::delete('/kontak/{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
+>>>>>>> 597fe26083cd0ae4508da10825fcf4cf75aac7e0
 });
 
 
@@ -136,8 +155,17 @@ Route::get('/about', [FrontendController::class, 'about'])
     ->name('frontend.about');
 
 // KONTAK
-Route::get('/kontak', [FrontendController::class, 'kontak'])
-    ->name('frontend.kontak');
+Route::get('/cara_pesan', [FrontendController::class, 'caraPesan'])
+    ->name('cara_pesan');
+
+Route::post('/kontak', [FrontendKontakController::class, 'store'])
+->name('frontend.kontak.store');
+
+Route::get('/kontak', function () {
+    return view('frontend.kontak');})
+    ->name('frontend.kontak'); //selvie
+
+
 //PRODUK
 Route::get('/produk', [FrontendProdukController::class, 'index'])
     ->name('frontend.produk');

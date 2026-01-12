@@ -8,11 +8,11 @@ use App\Models\Kategori;
 class Produk extends Model
 {
     protected $table = 'produk';
-    protected $primaryKey = 'id_produk';
-    public $incrementing = false;
-    protected $keyType = 'string';
 
-    public $timestamps = false;
+    protected $primaryKey = 'id_produk'; 
+
+    public $incrementing = false; 
+    protected $keyType = 'string';
 
     protected $fillable = [
         'id_produk',

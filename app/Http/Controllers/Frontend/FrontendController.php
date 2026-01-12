@@ -17,8 +17,15 @@ class FrontendController extends Controller
         return view('frontend.about');
     }
 
-    public function kontak()
-    {
-        return view('frontend.kontak');
+   public function caraPesan()
+   {
+    return view('frontend.cara_pesan'); 
     }
+    
+    public function kontak()
+{
+    return view('frontend.kontak'); 
+}
+
+
 }

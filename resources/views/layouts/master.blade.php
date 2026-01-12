@@ -55,7 +55,7 @@
 
             <a href="{{ route('admin.kontak.index') }}"
                class="menu {{ request()->routeIs('admin.kontak.*') ? 'active' : '' }}">
-               <i class="fas fa-envelope"></i> Kontak
+               <i class="fas fa-envelope"></i> Pesan
             </a>
 
         </nav>

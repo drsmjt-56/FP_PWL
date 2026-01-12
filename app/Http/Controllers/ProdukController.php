@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Kategori;
+use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
@@ -23,7 +23,7 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'id_produk' => 'required',
+            'id_produk' => 'required|unique:produk,id_produk',
             'id_kategori' => 'nullable',
             'nama_produk' => 'required',
             'harga_sewa_perhari' => 'required|numeric',
@@ -40,20 +40,21 @@ class ProdukController extends Controller
 
         Produk::create($data);
 
-        return redirect()->route('produk.index')
-                         ->with('success', 'Produk berhasil ditambahkan');
+        return redirect()->route('admin.produk.index')
+            ->with('success', 'Produk berhasil ditambahkan');
     }
 
-    public function edit($id)
+    public function edit($id_produk)
     {
-        $produk = Produk::findOrFail($id);
+        $produk = Produk::findOrFail($id_produk);
         $kategori = Kategori::all();
-        return view('produk.edit', compact('produk','kategori'));
+
+        return view('produk.edit', compact('produk', 'kategori'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_produk)
     {
-        $produk = Produk::findOrFail($id);
+        $produk = Produk::findOrFail($id_produk);
 
         $data = $request->validate([
             'id_kategori' => 'nullable',
@@ -76,13 +77,13 @@ class ProdukController extends Controller
 
         $produk->update($data);
 
-        return redirect()->route('produk.index')
-                         ->with('success', 'Produk berhasil diupdate');
+        return redirect()->route('admin.produk.index')
+            ->with('success', 'Produk berhasil diupdate');
     }
 
-    public function destroy($id)
+    public function destroy($id_produk)
     {
-        $produk = Produk::findOrFail($id);
+        $produk = Produk::findOrFail($id_produk);
 
         if ($produk->gambar && file_exists(public_path('uploads/produk/'.$produk->gambar))) {
             unlink(public_path('uploads/produk/'.$produk->gambar));
@@ -90,8 +91,7 @@ class ProdukController extends Controller
 
         $produk->delete();
 
-        return redirect()->route('produk.index')
-                         ->with('success', 'Produk berhasil dihapus');
+        return redirect()->route('admin.produk.index')
+            ->with('success', 'Produk berhasil dihapus');
     }
-
 }
