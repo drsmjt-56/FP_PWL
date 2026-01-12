@@ -94,6 +94,10 @@ Route::get('/about', [FrontendController::class, 'about'])
 // KONTAK
 Route::get('/kontak', [FrontendController::class, 'kontak'])
     ->name('frontend.kontak');
+Route::get('/kontak', function () {
+    return view('frontend.kontak');})
+    ->name('frontend.kontak'); //selvie
+
 //PRODUK
 Route::get('/produk', [FrontendProdukController::class, 'index'])
     ->name('frontend.produk');

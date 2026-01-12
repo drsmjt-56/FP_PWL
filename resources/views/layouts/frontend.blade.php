@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>M0ntu Adventure</title>
+    <title>@yield('title', 'M0ntu Adventure')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {{-- Tailwind CDN --}}
@@ -35,12 +35,13 @@
             </h1>
 
             {{-- MENU --}}
-        <nav class="space-x-6 text-sm font-medium">
-            <a href="{{ route('frontend.home') }}" class="hover:text-matcha">Home</a>
-            <a href="{{ route('frontend.about') }}" class="hover:text-matcha">About</a>
-            <a href="{{ route('frontend.produk') }}" class="hover:text-matcha">Produk</a>
-            <a href="{{ route('frontend.kontak') }}" class="hover:text-matcha">Contact</a>
-        </nav>
+            <nav class="space-x-6 text-sm font-medium">
+                <a href="{{ route('frontend.home') }}" class="hover:text-matcha">Home</a>
+                <a href="{{ route('frontend.about') }}" class="hover:text-matcha">About</a>
+                <a href="{{ route('frontend.produk') }}" class="hover:text-matcha">Produk</a>
+                <a href="{{ route('frontend.kontak') }}" class="hover:text-matcha">Contact</a>
+            </nav>
+
         </div>
     </header>
 
@@ -53,7 +54,6 @@
     <footer class="bg-matchaDark text-white">
         <div class="max-w-7xl mx-auto px-6 py-8 grid md:grid-cols-3 gap-6">
 
-            {{-- BRAND --}}
             <div>
                 <h2 class="text-xl font-bold">M0ntu Adventure</h2>
                 <p class="text-sm mt-2">
@@ -61,7 +61,6 @@
                 </p>
             </div>
 
-            {{-- SOSIAL MEDIA --}}
             <div>
                 <h3 class="font-semibold mb-2">Sosial Media</h3>
                 <ul class="space-y-1 text-sm">
@@ -71,7 +70,6 @@
                 </ul>
             </div>
 
-            {{-- COPYRIGHT --}}
             <div class="text-sm text-right">
                 © {{ date('Y') }} M0ntu Adventure <br>
                 All rights reserved
@@ -82,4 +80,3 @@
 
 </body>
 </html>
-<!--ini hal layout--!
