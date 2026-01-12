@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class KontakController extends Controller
 {
-    public function index() //menampilkan semua data
+    public function index()
     {
         $kontak = Kontak::all();
         return view('kontak.index', compact('kontak'));
@@ -19,18 +19,7 @@ class KontakController extends Controller
         return view('kontak.edit', compact('kontak'));
     }
 
-    public function store(Request $request) //validasi input dari user
-    {
-        Kontak::create($request->validate([
-            'nama' => 'required',
-            'nomor_telepon' => 'required|numeric',
-            'pesan' => 'required',
-        ]));
-
-        return redirect()->back()->with('success', 'pesan berhasil dikirim');
-    }
-
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'status' => 'required',
@@ -39,14 +28,15 @@ class KontakController extends Controller
         $kontak = Kontak::findOrFail($id);
         $kontak->update($request->only('status'));
 
-       return redirect('/kontak')->with('success', 'Status berhasil diubah');
-
+        return redirect()->route('admin.kontak.index')
+            ->with('success', 'Status berhasil diubah');
     }
 
-    public function destroy(string $id)
+    public function destroy($id)
     {
         Kontak::destroy($id);
-        return redirect()->back()->with('success', 'Pesan berhasil dihapus');
 
+        return redirect()->route('admin.kontak.index')
+            ->with('success', 'Pesan berhasil dihapus');
     }
 }

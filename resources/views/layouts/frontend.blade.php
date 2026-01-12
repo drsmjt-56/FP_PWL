@@ -39,6 +39,7 @@
             <a href="{{ route('frontend.home') }}" class="hover:text-matcha">Home</a>
             <a href="{{ route('frontend.about') }}" class="hover:text-matcha">About</a>
             <a href="{{ route('frontend.produk') }}" class="hover:text-matcha">Produk</a>
+            <a href="{{ route('cara_pesan') }}" class="hover:text-matcha">Cara Sewa</a>
             <a href="{{ route('frontend.kontak') }}" class="hover:text-matcha">Contact</a>
         </nav>
         </div>
