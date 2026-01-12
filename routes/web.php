@@ -98,8 +98,9 @@ Route::get('/cara_pesan', [FrontendController::class, 'caraPesan'])
 Route::post('/kontak', [FrontendKontakController::class, 'store'])
 ->name('frontend.kontak.store');
 
-Route::get('/kontak', [FrontendController::class, 'kontak'])
-->name('frontend.kontak');
+Route::get('/kontak', function () {
+    return view('frontend.kontak');})
+    ->name('frontend.kontak'); //selvie
 
 
 //PRODUK
