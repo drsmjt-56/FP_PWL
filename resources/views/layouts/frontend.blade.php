@@ -23,58 +23,47 @@
         }
     </script>
 </head>
-<body class="bg-cream text-gray-800">
+
+<body class="bg-cream text-gray-800 flex flex-col min-h-screen">
 
     {{-- NAVBAR --}}
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-            {{-- LOGO --}}
             <h1 class="text-2xl font-bold text-matchaDark">
                 Montu Adventure
             </h1>
 
-            {{-- MENU --}}
-            <nav class="space-x-6 text-sm font-medium">
-                <a href="#" class="hover:text-matcha">Home</a>
-                <a href="#" class="hover:text-matcha">About</a>
-                <a href="#" class="hover:text-matcha">Produk</a>
-                <a href="#" class="hover:text-matcha">Cara Sewa</a>
-                <a href="#" class="hover:text-matcha">Contact</a>
-            </nav>
-        </div>
+           <nav class="space-x-6 text-sm font-medium">
+    <a href="{{ route('frontend.home') }}" class="hover:text-matcha">Home</a>
+    <a href="{{ route('frontend.about') }}" class="hover:text-matcha">About</a>
+    <a href="{{ route('frontend.produk') }}" class="hover:text-matcha">Produk</a>
+    <a href="{{ route('cara_pesan') }}" class="hover:text-matcha">Cara Sewa</a>
+    <a href="{{ route('frontend.kontak') }}" class="hover:text-matcha">Contact</a>
+</nav>
 
         </div>
+    </header>
 
-        <div>
+    {{-- CONTENT --}}
+    <main class="flex-grow">
+        @yield('content')
+    </main>
+
+    {{-- FOOTER --}}
+    <footer class="bg-matchaDark text-green-100">
+        <div class="max-w-7xl mx-auto px-6 py-10">
             <h3 class="text-lg font-semibold mb-4">Hubungi Kami</h3>
 
-            <ul class="space-y-3 text-base text-green-100 mb-4">
+            <ul class="space-y-3 text-base mb-4">
                 <li>📍 Sleman, Yogyakarta</li>
                 <li>📞 0857-5081-2173</li>
                 <li>✉️ montuadventure@gmail.com</li>
             </ul>
-
-            <div class="flex gap-4 mt-4 text-xl">
-                <a href="https://www.facebook.com/?locale=id_ID" class="hover:text-white transition">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://www.instagram.com/" class="hover:text-white transition">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com/id-ID/" class="hover:text-white transition">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-            </div>
         </div>
 
-    </div>
-
-    <div class="border-t border-green-700 text-center text-base py-5 text-green-200">
-        © {{ date('Y') }} Montu Adventure • By Degem
-    </div>
-</footer>
-<!-- Montu Adventure -->
+        <div class="border-t border-green-700 text-center text-base py-5 text-green-200">
+            © {{ date('Y') }} Montu Adventure • By Degem
+        </div>
     </footer>
 
 </body>
