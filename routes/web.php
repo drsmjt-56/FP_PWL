@@ -135,6 +135,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/kontak/{id}/edit', [KontakController::class, 'edit'])->name('kontak.edit');
     Route::put('/kontak/{id}', [KontakController::class, 'update'])->name('kontak.update');
     Route::delete('/kontak/{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
+
+    Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.store');
+
+    // PEMBAYARAN
+    Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
+    Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
+    Route::put('/pembayaran/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
+    Route::delete('/pembayaran/{id}', [PembayaranController::class, 'destroy'])->name('pembayaran.destroy');
+
 });
 
 

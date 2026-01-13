@@ -34,9 +34,8 @@
 <div class="container mx-auto px-6 py-16 text-center mb-24">
     <h2 class="text-4xl font-bold mb-6">Tentang Kami</h2>
     <p class="max-w-4xl mx-auto text-gray-600 leading-relaxed text-lg">
-        Montu Adventure menyediakan perlengkapan outdoor lengkap untuk camping,
-        hiking, dan petualangan alam. Kami berkomitmen memberikan peralatan
-        berkualitas dengan harga terjangkau dan pelayanan cepat.
+        Mountu Adventure adalah partner terbaik untuk petualangan alam Anda. 
+        Menyediakan perlengkapan outdoor berkualitas, harga terjangkau, dan layanan cepat untuk pengalaman yang aman dan nyaman.
     </p>
 </div>
 
@@ -54,7 +53,7 @@
             </div>
             <div class="p-6 text-center">
                 <h4 class="text-xl font-semibold">Tenda Camping</h4>
-                <p class="text-matchaDark font-bold mt-2">Rp 50.000 / hari</p>
+                <p class="text-matchaDark font-bold mt-2">Rp 30.000 / hari</p>
             </div>
         </div>
 
@@ -65,7 +64,7 @@
             </div>
             <div class="p-6 text-center">
                 <h4 class="text-xl font-semibold">Carrier</h4>
-                <p class="text-matchaDark font-bold mt-2">Rp 30.000 / hari</p>
+                <p class="text-matchaDark font-bold mt-2">Rp 20.000 / hari</p>
             </div>
         </div>
 
@@ -76,12 +75,13 @@
             </div>
             <div class="p-6 text-center">
                 <h4 class="text-xl font-semibold">Sleeping Bag</h4>
-                <p class="text-matchaDark font-bold mt-2">Rp 20.000 / hari</p>
+                <p class="text-matchaDark font-bold mt-2">Rp 8.000 / hari</p>
             </div>
         </div>
 
     </div>
 </div>
+
 
 <!-- Keunggulan -->
 <div class="container mx-auto px-6 py-16 mb-24">
@@ -89,12 +89,11 @@
     <!-- Judul & Deskripsi -->
     <div class="text-center mb-14 max-w-3xl mx-auto">
         <h2 class="text-4xl font-bold mb-4">
-            Kenapa Memilih Montu Adventure?
+            Kenapa Memilih Mountu Adventure?
         </h2>
         <p class="text-gray-600 text-lg leading-relaxed">
-            Alasan kenapa Montu Adventure menjadi pilihan terbaik untuk sewa alat
-            camping dan hiking. mulai dari kualitas perlengkapan, harga, hingga
-            pelayanan yang cepat dan terpercaya.
+           Montu Adventure adalah pilihan tepat buat kamu yang ingin camping dan hiking tanpa ribet. 
+           Perlengkapan lengkap, kualitas terjamin, harga bersahabat, dan pelayanan cepat siap menemani petualanganmu.
         </p>
     </div>
 
@@ -130,30 +129,68 @@
 
 
 <!-- Testimoni -->
-<div class="container mx-auto px-6 py-12 mb-24">
-    <h2 class="text-4xl font-bold text-center mb-12">Testimoni Pelanggan</h2>
+<div class="container mx-auto px-6 py-16 mb-24">
+    <h2 class="text-4xl font-bold text-center mb-14">
+        Apa Kata Pelanggan Kami
+    </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- Card 1 -->
         <div class="bg-white rounded-2xl shadow-md p-8">
-            <p class="italic text-gray-600 mb-4">
-                "Pelayanan sangat baik, perlengkapannya lengkap dan berkualitas!"
+            <div class="flex items-center gap-4 mb-4">
+                <img src="/images/asep.jpg"
+                class="w-14 h-14 rounded-full object-cover">
+                <div>
+                    <h4 class="font-semibold text-lg">Asep</h4>
+                    <div class="text-yellow-400">
+                        ★★★★★
+                    </div>
+                </div>
+            </div>
+            <p class="text-gray-600 leading-relaxed">
+                Best service sekali. Pelayanan ramah dan cepat,
+                alatnya bersih wangi, kondisinya juga bagus.
+                Recommended banget!
             </p>
-            <strong class="text-matchaDark">Alex</strong>
         </div>
+
+        <!-- Card 2 -->
         <div class="bg-white rounded-2xl shadow-md p-8">
-            <p class="italic text-gray-600 mb-4">
-                "Sangat puas dengan sewa tenda dan carrier di Montu Adventure."
+            <div class="flex items-center gap-4 mb-4">
+                <img src="/images/ayu.jpg"
+                class="w-14 h-14 rounded-full object-cover">
+
+                <div>
+                    <h4 class="font-semibold text-lg">Ayu</h4>
+                    <div class="text-yellow-400">
+                        ★★★★★
+                    </div>
+                </div>
+            </div>
+            <p class="text-gray-600 leading-relaxed">
+                Tempat sewa alat outdoor lengkap,
+                pelayanan ramah dan cepat,
+                harga terjangkau. Recommended!
             </p>
-            <strong class="text-matchaDark">Chealsea</strong>
         </div>
+
+        <!-- Card 3 -->
         <div class="bg-white rounded-2xl shadow-md p-8">
-            <p class="italic text-gray-600 mb-4">
-                "Harga terjangkau dan pengiriman cepat, recommended!"
+            <div class="flex items-center gap-4 mb-4">
+                <img src="/images/tom.jpg"
+                class="w-14 h-14 rounded-full object-cover">
+                <div>
+                    <h4 class="font-semibold text-lg">Tom</h4>
+                    <div class="text-yellow-400">
+                        ★★★★★
+                    </div>
+                </div>
+            </div>
+            <p class="text-gray-600 leading-relaxed">
+                Tempatnya bagus, harga sewa cukup terjangkau,
+                kualitas alat sangat memuaskan 
             </p>
-            <strong class="text-matchaDark">Asep</strong>
         </div>
     </div>
 </div>
-
-
-@endsection
+@endsection  
