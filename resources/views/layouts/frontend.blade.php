@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>Montu Adventure</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    {{-- Tailwind CDN --}}
     <script src="https://cdn.tailwindcss.com"></script>
 
+    {{-- Custom color --}}
     <script>
         tailwind.config = {
             theme: {
@@ -22,61 +23,25 @@
         }
     </script>
 </head>
-
 <body class="bg-cream text-gray-800">
 
-{{-- ================= NAVBAR ================= --}}
-<header class="bg-white shadow sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    {{-- NAVBAR --}}
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-        {{-- LOGO --}}
-        <div class="flex items-center gap-3">
-            <img src="{{ asset('images/logo.png') }}"
-                 alt="Montu Adventure"
-                 class="h-10 w-auto">
-
-
-            <span class="text-xl font-bold text-matchaDark">
+            {{-- LOGO --}}
+            <h1 class="text-2xl font-bold text-matchaDark">
                 Montu Adventure
-            </span>
-        </div>
+            </h1>
 
             {{-- MENU --}}
-
-        <nav class="space-x-6 text-sm font-medium">
-            <a href="{{ route('frontend.home') }}" class="hover:text-matcha">Home</a>
-            <a href="{{ route('frontend.about') }}" class="hover:text-matcha">About</a>
-            <a href="{{ route('frontend.produk') }}" class="hover:text-matcha">Produk</a>
-            <a href="{{ route('cara_pesan') }}" class="hover:text-matcha">Cara Sewa</a>
-            <a href="{{ route('frontend.kontak') }}" class="hover:text-matcha">Contact</a>
-        </nav>
-
-    </div>
-</header>
-
-{{-- ================= CONTENT ================= --}}
-<main class="max-w-7xl mx-auto px-6 py-10 min-h-[70vh]">
-    @yield('content')
-</main>
-
-{{-- ================= FOOTER ================= --}}
-<footer class="bg-gradient-to-b from-matchaDark to-green-900 text-white">
-    <div class="max-w-7xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-3 items-start">
-
-        <div>
-            <img src="{{ asset('images/logo.png') }}"
-                 class="h-12 mb-4"
-                 alt="Montu Adventure">
-
-            <h2 class="text-xl font-bold text-white mb-2">
-                Montu Adventure
-            </h2>
-
-            <p class="text-base text-green-100 leading-relaxed">
-                Penyedia sewa alat camping & outdoor
-                terpercaya untuk menemani setiap
-                petualangan alam Anda.
-            </p>
+            <nav class="space-x-6 text-sm font-medium">
+                <a href="#" class="hover:text-matcha">Home</a>
+                <a href="#" class="hover:text-matcha">About</a>
+                <a href="#" class="hover:text-matcha">Produk</a>
+                <a href="#" class="hover:text-matcha">Cara Sewa</a>
+                <a href="#" class="hover:text-matcha">Contact</a>
+            </nav>
         </div>
 
         <div>
@@ -87,6 +52,7 @@
                 <li>Peralatan Masak Outdoor</li>
                 <li>Perlengkapan Hiking</li>
             </ul>
+
         </div>
 
         <div>
@@ -117,6 +83,8 @@
         © {{ date('Y') }} Montu Adventure • By Degem
     </div>
 </footer>
+<!-- Montu Adventure -->
+    </footer>
 
 </body>
 </html>
