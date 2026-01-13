@@ -10,7 +10,7 @@ class PembayaranSeeder extends Seeder
 {
     public function run(): void
     {
-        Pembayaran::insert([
+        $data = [
             [
                 'id_pembayaran' => 'PAY-0001',
                 'nama_penyewa' => 'Andi Saputra',
@@ -20,8 +20,6 @@ class PembayaranSeeder extends Seeder
                 'status' => 'pending',
                 'tanggal_bayar' => Carbon::now()->subDays(2),
                 'keterangan' => 'Menunggu konfirmasi admin',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'id_pembayaran' => 'PAY-0002',
@@ -32,8 +30,6 @@ class PembayaranSeeder extends Seeder
                 'status' => 'diterima',
                 'tanggal_bayar' => Carbon::now()->subDay(),
                 'keterangan' => 'Pembayaran diterima',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'id_pembayaran' => 'PAY-0003',
@@ -44,9 +40,14 @@ class PembayaranSeeder extends Seeder
                 'status' => 'ditolak',
                 'tanggal_bayar' => Carbon::now(),
                 'keterangan' => 'Bukti transfer tidak valid',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
-        ]);
+        ];
+
+        foreach ($data as $item) {
+            Pembayaran::updateOrCreate(
+                ['id_pembayaran' => $item['id_pembayaran']],
+                $item
+            );
+        }
     }
 }

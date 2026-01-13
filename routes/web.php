@@ -15,7 +15,20 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\FrontendProdukController;
 use App\Http\Controllers\Frontend\FrontendKontakController;
+<<<<<<< HEAD
+=======
 
+<<<<<<< HEAD
+=======
+
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
+>>>>>>> 92adf2d55f8f9d50b5e2933458982d816a1140ab
+
+>>>>>>> c30a80f91a59eb57319a6d2857418fc162c97aa4
 Route::get('/', function () {
     return redirect()->route('frontend.home');
 });
@@ -66,6 +79,13 @@ Route::middleware('auth')
     Route::get('/kontak/{id}/edit', [KontakController::class, 'edit'])->name('kontak.edit');
     Route::put('/kontak/{id}', [KontakController::class, 'update'])->name('kontak.update');
     Route::delete('/kontak/{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 92adf2d55f8f9d50b5e2933458982d816a1140ab
+>>>>>>> c30a80f91a59eb57319a6d2857418fc162c97aa4
     Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.store');
 
     // PEMBAYARAN
@@ -73,6 +93,13 @@ Route::middleware('auth')
     Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
     Route::put('/pembayaran/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
     Route::delete('/pembayaran/{id}', [PembayaranController::class, 'destroy'])->name('pembayaran.destroy');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 92adf2d55f8f9d50b5e2933458982d816a1140ab
+>>>>>>> c30a80f91a59eb57319a6d2857418fc162c97aa4
 });
 
 /*
