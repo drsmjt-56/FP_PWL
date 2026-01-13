@@ -41,6 +41,15 @@
     <a href="{{ route('frontend.kontak') }}" class="hover:text-matcha">Contact</a>
 </nav>
 
+        <div>
+            <h3 class="text-lg font-semibold mb-4">Layanan Populer</h3>
+            <ul class="space-y-2 text-base text-green-100">
+                <li>Sewa Tenda Camping</li>
+                <li>Paket Camping Lengkap</li>
+                <li>Peralatan Masak Outdoor</li>
+                <li>Perlengkapan Hiking</li>
+            </ul>
+
         </div>
     </header>
 
