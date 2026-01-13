@@ -57,18 +57,18 @@
                     <td class="px-6 py-4">{{ $pembayaran->tanggal_bayar }}</td>
 
                     <td class="px-6 py-4 text-center space-x-2">
-                        <a href="{{ route('pembayaran.edit', $pembayaran->id_pembayaran) }}"
-                           class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md bg-yellow-400 hover:bg-yellow-500 text-white transition">
-                            <i class="fa-solid fa-pen mr-1"></i> Edit
+                        <a href="{{ route('admin.pembayaran.edit', $pembayaran->id_pembayaran) }}"
+                           class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                        <i class="fa-solid fa-pencil mr-1"></i> Edit
                         </a>
 
-                        <form action="{{ route('pembayaran.destroy', $pembayaran->id_pembayaran) }}"
+                        <form action="{{ route('admin.pembayaran.destroy', $pembayaran->id_pembayaran) }}"
                               method="POST" class="inline">
                             @csrf
                             @method('DELETE')
                             <button onclick="return confirm('Hapus data pembayaran?')"
-                                class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md bg-red-500 hover:bg-red-600 text-white transition">
-                                <i class="fa-solid fa-trash mr-1"></i> Hapus
+                                class="inline-flex items-center text-red-600 hover:text-red-800">
+                            <i class="fa-solid fa-trash mr-1"></i> Hapus
                             </button>
                         </form>
                     </td>

@@ -9,13 +9,50 @@ use Illuminate\Support\Str;
 class PembayaranController extends Controller
 {
     // TAMPIL SEMUA
-   public function index()
-{
-    $pembayarans = Pembayaran::orderBy('created_at', 'desc')->get();
-    return view('admin.pembayaran.index', compact('pembayarans'));
-}
+    public function index()
+    {
+        $pembayarans = Pembayaran::orderBy('created_at', 'desc')->get();
+        return view('admin.pembayaran.index', compact('pembayarans'));
+    }
 
-    // SIMPAN PEMBAYARAN
+    // FORM EDIT (WAJIB ADA)
+    public function edit($id)
+    {
+        $pembayaran = Pembayaran::where('id_pembayaran', $id)->firstOrFail();
+        return view('admin.pembayaran.edit', compact('pembayaran'));
+    }
+
+    // UPDATE STATUS (UNTUK FORM ADMIN)
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:pending,diterima,ditolak',
+            'keterangan' => 'nullable'
+        ]);
+
+        Pembayaran::where('id_pembayaran', $id)->update([
+            'status' => $request->status,
+            'keterangan' => $request->keterangan
+        ]);
+
+        return redirect()
+            ->route('pembayaran.index')
+            ->with('success', 'Status pembayaran berhasil diperbarui');
+    }
+
+    // HAPUS
+    public function destroy($id)
+    {
+        Pembayaran::where('id_pembayaran', $id)->delete();
+
+        return redirect()
+            ->route('pembayaran.index')
+            ->with('success', 'Data pembayaran berhasil dihapus');
+    }
+
+    // ==========================
+    // API / USER SIDE (OPSIONAL)
+    // ==========================
     public function store(Request $request)
     {
         $request->validate([
@@ -41,44 +78,5 @@ class PembayaranController extends Controller
             'message' => 'Pembayaran berhasil dikirim',
             'data' => $pembayaran
         ], 201);
-    }
-
-    // DETAIL
-    public function show($id)
-    {
-        return response()->json(
-            Pembayaran::findOrFail($id)
-        );
-    }
-
-    // UPDATE STATUS OLEH ADMIN
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'status' => 'required|in:diterima,ditolak',
-            'keterangan' => 'nullable'
-        ]);
-
-        $pembayaran = Pembayaran::findOrFail($id);
-
-        $pembayaran->update([
-            'status' => $request->status,
-            'keterangan' => $request->keterangan
-        ]);
-
-        return response()->json([
-            'message' => 'Status pembayaran diperbarui',
-            'data' => $pembayaran
-        ]);
-    }
-
-    // HAPUS
-    public function destroy($id)
-    {
-        Pembayaran::findOrFail($id)->delete();
-
-        return response()->json([
-            'message' => 'Data pembayaran dihapus'
-        ]);
     }
 }
