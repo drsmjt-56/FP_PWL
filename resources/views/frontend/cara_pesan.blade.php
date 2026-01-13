@@ -27,17 +27,17 @@
 
     <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
         <div class="text-4xl font-bold text-matchaDark mb-2">2</div>
-        <h3 class="font-semibold mb-1">Tentukan Tanggal</h3>
+        <h3 class="font-semibold mb-1">Cek Ketersediaan</h3>
         <p class="text-sm text-gray-500">
-            Tentukan tanggal pemakaian alat.
+            Isi form untuk menanyakan ketersediaan barang.
         </p>
     </div>
 
     <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
         <div class="text-4xl font-bold text-matchaDark mb-2">3</div>
-        <h3 class="font-semibold mb-1">Cek Ketersediaan</h3>
+        <h3 class="font-semibold mb-1">Tentukan Tanggal</h3>
         <p class="text-sm text-gray-500">
-            Isi form untuk menanyakan ketersediaan barang.
+            Tentukan tanggal pemakaian alat.
         </p>
     </div>
 
