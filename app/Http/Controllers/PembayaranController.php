@@ -8,13 +8,44 @@ use Illuminate\Support\Str;
 
 class PembayaranController extends Controller
 {
- 
     public function index()
     {
         $pembayarans = Pembayaran::orderBy('created_at', 'desc')->get();
         return view('admin.pembayaran.index', compact('pembayarans'));
     }
 
+    // 🔥 FORM TAMBAH PEMBAYARAN (ADMIN)
+    public function create()
+    {
+        return view('admin.pembayaran.create');
+    }
+
+    // 🔥 SIMPAN DATA DARI FORM ADMIN
+    public function storeAdmin(Request $request)
+    {
+        $request->validate([
+            'nama_penyewa' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:20',
+            'total_bayar' => 'required|numeric',
+            'metode_bayar' => 'required|in:Transfer,Cash',
+            'tanggal_bayar' => 'required|date',
+        ]);
+
+        Pembayaran::create([
+            'id_pembayaran' => 'PAY-' . strtoupper(Str::random(8)),
+            'nama_penyewa' => $request->nama_penyewa,
+            'no_hp' => $request->no_hp,
+            'total_bayar' => $request->total_bayar,
+            'metode_bayar' => $request->metode_bayar,
+            'tanggal_bayar' => $request->tanggal_bayar,
+            'status' => 'pending',
+            'keterangan' => null
+        ]);
+
+        return redirect()
+            ->route('admin.pembayaran.index')
+            ->with('success', 'Data pembayaran berhasil ditambahkan');
+    }
 
     public function edit($id)
     {
@@ -22,42 +53,41 @@ class PembayaranController extends Controller
         return view('admin.pembayaran.edit', compact('pembayaran'));
     }
 
-
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'nama_penyewa' => 'required|string|max:255',
-        'no_hp' => 'required|string|max:20',
-        'total_bayar' => 'required|numeric',
-        'metode_bayar' => 'required|in:Transfer,Cash',
-        'tanggal_bayar' => 'required|date',
-        'status' => 'required|in:pending,diterima,ditolak',
-    ]);
+    {
+        $request->validate([
+            'nama_penyewa' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:20',
+            'total_bayar' => 'required|numeric',
+            'metode_bayar' => 'required|in:Transfer,Cash',
+            'tanggal_bayar' => 'required|date',
+            'status' => 'required|in:pending,diterima,ditolak',
+        ]);
 
-    Pembayaran::where('id_pembayaran', $id)->update([
-        'nama_penyewa' => $request->nama_penyewa,
-        'no_hp' => $request->no_hp,
-        'total_bayar' => $request->total_bayar,
-        'metode_bayar' => $request->metode_bayar,
-        'tanggal_bayar' => $request->tanggal_bayar,
-        'status' => $request->status,
-    ]);
+        Pembayaran::where('id_pembayaran', $id)->update([
+            'nama_penyewa' => $request->nama_penyewa,
+            'no_hp' => $request->no_hp,
+            'total_bayar' => $request->total_bayar,
+            'metode_bayar' => $request->metode_bayar,
+            'tanggal_bayar' => $request->tanggal_bayar,
+            'status' => $request->status,
+        ]);
 
-    return redirect()
-        ->route('admin.pembayaran.index')
-        ->with('success', 'Data pembayaran berhasil diperbarui');
-}
+        return redirect()
+            ->route('admin.pembayaran.index')
+            ->with('success', 'Data pembayaran berhasil diperbarui');
+    }
 
- public function destroy($id)
-{
-    Pembayaran::where('id_pembayaran', $id)->delete();
+    public function destroy($id)
+    {
+        Pembayaran::where('id_pembayaran', $id)->delete();
 
-    return redirect()
-        ->route('admin.pembayaran.index')
-        ->with('success', 'Data pembayaran berhasil dihapus');
-}
+        return redirect()
+            ->route('admin.pembayaran.index')
+            ->with('success', 'Data pembayaran berhasil dihapus');
+    }
 
-
+    // ⚠️ STORE API (TETAP DIPERTAHANKAN)
     public function store(Request $request)
     {
         $request->validate([

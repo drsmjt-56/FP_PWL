@@ -5,13 +5,19 @@
 @section('content')
 <div class="bg-white rounded-xl shadow-sm border border-gray-200">
     
-    <!-- Header -->
-    <div class="px-6 py-4 border-b border-gray-200">
-        <h2 class="text-lg font-semibold text-gray-800">Data Pembayaran</h2>
-        <p class="text-sm text-gray-500">Daftar pembayaran yang masuk</p>
+
+    <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+        <div>
+            <h2 class="text-lg font-semibold text-gray-800">Data Pembayaran</h2>
+            <p class="text-sm text-gray-500">Daftar pembayaran yang masuk</p>
+        </div>
+        <a href="{{ route('admin.pembayaran.create') }}"
+           class="mb-4 inline-block bg-green-600 text-white px-4 py-2 rounded">
+            <i class="fa-solid fa-plus mr-2"></i>
+            Tambah Pembayaran
+        </a>
     </div>
 
-    <!-- Table -->
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
             <thead class="bg-gray-50">
@@ -59,7 +65,7 @@
                     <td class="px-6 py-4 text-center space-x-2">
                         <a href="{{ route('admin.pembayaran.edit', $pembayaran->id_pembayaran) }}"
                            class="inline-flex items-center text-blue-600 hover:text-blue-800">
-                        <i class="fa-solid fa-pencil mr-1"></i> Edit
+                           <i class="fa-solid fa-pencil mr-1"></i> Edit
                         </a>
 
                         <form action="{{ route('admin.pembayaran.destroy', $pembayaran->id_pembayaran) }}"
@@ -68,7 +74,7 @@
                             @method('DELETE')
                             <button onclick="return confirm('Hapus data pembayaran?')"
                                 class="inline-flex items-center text-red-600 hover:text-red-800">
-                            <i class="fa-solid fa-trash mr-1"></i> Hapus
+                                <i class="fa-solid fa-trash mr-1"></i> Hapus
                             </button>
                         </form>
                     </td>

@@ -10,7 +10,9 @@ class Pembayaran extends Model
     protected $primaryKey = 'id_pembayaran';
     public $incrementing = false;
     protected $keyType = 'string';
+
     protected $fillable = [
+        'id_pembayaran',   // 🔥 WAJIB DITAMBAHKAN
         'nama_penyewa',
         'no_hp',
         'total_bayar',
@@ -20,7 +22,3 @@ class Pembayaran extends Model
         'keterangan'
     ];
 }
-
-
-
-
